@@ -1,0 +1,674 @@
+/* Importing Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Source+Sans+Pro:wght@400;700&display=swap");
+
+/* Global Styles */
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #333;
+  --background-color: #f9f9f9;
+  --font-color: #333;
+  --border-color: #ddd;
+}
+
+body {
+  font-family: "Montserrat", "Source Sans Pro", sans-serif;
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+  width: 90vw;
+}
+
+/* Header Styles */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+  width: 150px;
+}
+
+.navigation ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navigation li {
+  margin: 0 15px;
+  cursor: pointer;
+  background-color: #fff; /* White background for nav items */
+  padding: 10px 15px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navigation a {
+  text-decoration: none;
+  color: var(--secondary-color); /* Default text color */
+  transition: color 0.3s ease;
+}
+
+.navigation a:hover {
+  color: var(--primary-color); /* Change text color on hover */
+}
+
+.navigation li:hover {
+  background-color: #f0f0f0; /* Light background on hover */
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border-color);
+  padding: 5px;
+  border-radius: 4px;
+  flex-grow: 1;
+  margin: 0 20px;
+  width: 300px;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  padding: 5px;
+  width: 100%;
+}
+
+.search-bar i {
+  color: #888;
+}
+
+.user-icons {
+  display: flex;
+  align-items: center;
+}
+
+.icon-container {
+  position: relative;
+  margin-left: 15px;
+  cursor: pointer;
+}
+
+.user-icons i {
+  font-size: 20px;
+  color: var(--secondary-color);
+  transition: color 0.3s ease;
+}
+
+.user-icons i:hover {
+  color: var(--primary-color);
+}
+
+.cart-count,
+.like-count {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  padding: 2px 5px;
+  font-size: 12px;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero img {
+  width: 100%;
+  height: auto;
+}
+
+.slides {
+  display: none;
+}
+
+.slides.active {
+  display: block;
+}
+
+.slides img {
+  width: 100%;
+  height: 700px;
+  object-fit: cover;
+}
+
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.prev {
+  left: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.next {
+  right: 0;
+  border-radius: 0 3px 3px 0;
+}
+
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Featured Products Section */
+.featured-products {
+  padding: 20px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Create 4 equal columns */
+  gap: 20px; /* Space between product items */
+}
+
+.product-item {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  padding: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack elements vertically */
+}
+
+.product-item:hover {
+  transform: scale(1.05); /* Scale effect on hover */
+}
+
+.product-info {
+  flex-grow: 1; /* Allow product info to grow */
+  display: flex; /* Use flexbox for layout */
+  flex-direction: column; /* Stack elements vertically */
+  justify-content: space-between; /* Space between elements */
+}
+
+.product-price {
+  color: #888; /* Price color */
+  margin: 10px 0; /* Space around price */
+}
+
+.add-to-cart {
+  background-color: #007bff; /* Button background color */
+  color: white; /* Button text color */
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px; /* Adjust padding for a smaller button */
+  cursor: pointer;
+  transition: background-color 0.3s; /* Transition for background color */
+  display: flex;
+  align-items: center; /* Center icon and text */
+  justify-content: center; /* Center text horizontally */
+  opacity: 0; /* Initially hidden */
+  transition: opacity 0.3s; /* Smooth transition for opacity */
+  margin: 10px auto 0; /* Center button and add margin at the top */
+  width: auto; /* Set width to auto for the button */
+}
+
+.product-item:hover .add-to-cart {
+  opacity: 1; /* Show button on hover */
+}
+
+.add-to-cart:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.add-to-cart i {
+  margin-right: 5px; /* Space between icon and text */
+}
+
+/* Footer Section */
+
+.footer {
+  background-color: #f1f1f1;
+  padding: 20px;
+  display: flex;
+  justify-content: center; /* Center the footer content */
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  flex: 1;
+  padding: 0 15px;
+  text-align: center; /* Center text within each section */
+  display: flex; /* Use flexbox to center content vertically */
+  flex-direction: column; /* Stack elements vertically */
+  justify-content: center; /* Center content vertically */
+}
+
+.footer h4 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: black; /* Change heading color to black */
+}
+
+.footer ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0; /* Remove default margin */
+}
+
+.footer a {
+  text-decoration: none;
+  color: var(--font-color);
+  transition: color 0.3s ease;
+}
+
+.footer a:hover {
+  color: var(--primary-color); /* Change color on hover */
+}
+
+.footer .social-media ul {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+}
+
+.footer .social-media ul li {
+  margin: 0 10px;
+}
+
+.footer .social-media ul li a {
+  color: var(--font-color);
+  font-size: 24px;
+}
+
+.footer .social-media ul li a:hover {
+  color: var(--primary-color);
+}
+
+/* Additional styles for icons */
+.footer li {
+  display: flex;
+  align-items: center; /* Center icons and text vertically */
+  justify-content: center; /* Center content horizontally */
+}
+
+.footer li i {
+  margin-right: 8px; /* Space between icon and text */
+}
+
+.payment-methods {
+  display: flex;
+  flex-direction: column; /* Stack payment methods vertically */
+}
+
+.payment-icons {
+  display: flex; /* Use flexbox for payment icons */
+  justify-content: center; /* Center payment icons */
+}
+
+.payment-icons li {
+  margin-right: 10px; /* Space between payment icons */
+}
+
+/* Cart Styles */
+.cart {
+  padding: 40px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 800px; /* Set max width for better alignment */
+  margin: 0 auto; /* Center the cart on the page */
+}
+
+h2 {
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.cart-items {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item img {
+  width: 120px;
+  height: auto;
+  margin-right: 20px;
+  border-radius: 8px;
+}
+
+.cart-item-details {
+  flex-grow: 1;
+}
+
+.cart-item-price {
+  color: #888;
+  font-size: 1.2em;
+  margin: 5px 0;
+}
+
+.cart-item input {
+  width: 60px;
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.promo-code {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.promo-code input {
+  padding: 10px;
+  width: 300px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.promo-code button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.promo-code button:hover {
+  background-color: #218838;
+}
+
+.gift-option {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the gift option */
+}
+
+.order-summary {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.order-summary h3 {
+  margin-bottom: 10px;
+}
+
+.cart-buttons {
+  display: flex;
+  justify-content: space-between; /* Space between buttons */
+  margin-top: 20px; /* Space above buttons */
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+  width: auto; /* Adjust button width */
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.customer-support,
+.secure-shopping,
+.privacy-protection {
+  margin: 20px 0;
+  display: flex;
+  align-items: center;
+}
+
+.payment-methods {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.payment-methods img {
+  width: 40px; /* Adjust size as needed */
+  margin-right: 10px;
+}
+
+.delivery-info {
+  margin-top: 20px;
+}
+
+/* Checkout Styles */
+.checkout {
+  padding: 40px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 800px; /* Center the checkout section */
+  margin: 0 auto; /* Center horizontally */
+}
+
+.checkout h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333; /* Darker color for better readability */
+}
+
+.checkout-items {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.checkout-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease; /* Smooth shadow transition */
+}
+
+.checkout-item:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+
+.checkout-item img {
+  width: 120px;
+  height: auto;
+  margin-right: 20px;
+  border-radius: 8px;
+}
+
+.checkout-item-details {
+  flex: 1; /* Allow details to take remaining space */
+}
+
+.order-summary {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.order-summary h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #333; /* Darker color for better readability */
+}
+
+.order-summary p {
+  font-size: 18px;
+  color: #555; /* Slightly lighter color for contrast */
+}
+
+/* Payment Input Styles */
+.payment-input {
+  width: calc(100% - 20px); /* Full width minus padding */
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: border-color 0.3s ease; /* Smooth border transition */
+}
+
+.payment-input:focus {
+  border-color: #007bff; /* Change border color on focus */
+  outline: none; /* Remove default outline */
+}
+
+/* Button Styles */
+.payment-button {
+  background-color: #007bff; /* Primary color */
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease; /* Smooth background transition */
+}
+
+.payment-button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+  .checkout {
+    padding: 20px; /* Reduce padding on smaller screens */
+  }
+
+  .checkout-item {
+    flex-direction: column; /* Stack items vertically */
+    align-items: flex-start; /* Align items to the start */
+  }
+
+  .checkout-item img {
+    margin-bottom: 10px; /* Space between image and details */
+  }
+}
+
+/* Order Complete Styles */
+.order-complete {
+  padding: 40px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  max-width: 600px; /* Limit the width for better readability */
+  margin: 0 auto; /* Center horizontally */
+  text-align: center; /* Center align the content */
+}
+
+.order-complete h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333; /* Darker color for better readability */
+}
+
+.order-complete p {
+  font-size: 16px;
+  color: #555; /* Slightly lighter color for contrast */
+  margin-bottom: 15px;
+}
+
+.order-details {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: left; /* Align details to the left */
+}
+
+.order-details h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333; /* Darker color for better readability */
+}
+
+.order-details ul {
+  list-style: none;
+  padding: 0;
+}
+
+.order-details li {
+  margin-bottom: 5px;
+}
+
+.back-to-home,
+.continue-shopping {
+  background-color: #007bff; /* Primary color */
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease; /* Smooth background transition */
+  margin: 0 10px; /* Add some spacing between buttons */
+}
+
+.back-to-home:hover,
+.continue-shopping:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+  .order-complete {
+    padding: 20px; /* Reduce padding on smaller screens */
+  }
+
+  .back-to-home,
+  .continue-shopping {
+    display: block; /* Stack buttons vertically */
+    width: 100%;
+    margin: 10px 0; /* Add more spacing between stacked buttons */
+  }
+}
