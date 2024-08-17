@@ -1,4 +1,3 @@
-// FeaturedProducts.js
 import React from 'react';
 import { useCart } from '../App'; // Import useCart hook from the App
 import { FaShoppingCart } from "react-icons/fa";
@@ -68,9 +67,9 @@ const FeaturedProducts = () => {
       <div className="product-grid">
         {products.map((product) => (
           <div key={product.id} className="product-item">
-            <img src={product.image} alt={product.name} />
+            <img src={product.image} alt={product.name} className="product-image" />
             <div className="product-info">
-              <h3>{product.name}</h3>
+              <h3 className="product-name">{product.name}</h3>
               <p className="product-price">{product.price}</p>
               <button className="add-to-cart" onClick={() => handleAddToCart(product)}>
                 <FaShoppingCart />
